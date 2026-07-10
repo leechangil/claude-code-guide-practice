@@ -1,0 +1,200 @@
+:root {
+  --bg: #0b1220;
+  --bg-soft: #141c2e;
+  --card: #182135;
+  --line: #263149;
+  --text: #eef2fb;
+  --muted: #93a0bd;
+  --accent: #4f8cff;
+  --accent-2: #2ee6a6;
+  --warn: #ff5a5f;
+  --radius: 16px;
+}
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+/* hidden 속성은 display 지정 요소에서도 항상 숨겨지도록 */
+[hidden] { display: none !important; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+    "Malgun Gothic", "Noto Sans KR", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.app {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: env(safe-area-inset-top) 18px calc(24px + env(safe-area-inset-bottom));
+  min-height: 100vh;
+}
+
+.screen { padding-top: 18px; }
+
+/* ---------- Hero ---------- */
+.hero { text-align: center; margin: 12px 0 22px; }
+.hero-badge {
+  font-size: 44px;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.hero h1 { font-size: 26px; margin: 4px 0 4px; letter-spacing: -0.5px; }
+.subtitle { color: var(--muted); margin: 0; font-size: 14px; }
+
+/* ---------- Card ---------- */
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+.field:last-child { margin-bottom: 0; }
+.field-inline { margin-top: 14px; margin-bottom: 0; }
+.field-label { font-size: 13px; color: var(--muted); font-weight: 600; }
+
+select {
+  appearance: none;
+  width: 100%;
+  padding: 14px 40px 14px 14px;
+  font-size: 16px;
+  color: var(--text);
+  background: var(--bg-soft)
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%2393a0bd' stroke-width='3'><path d='M6 9l6 6 6-6'/></svg>")
+    no-repeat right 14px center;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+select:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+.route-info {
+  margin-top: 4px;
+  padding: 12px 14px;
+  background: var(--bg-soft);
+  border-radius: 12px;
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.5;
+}
+.route-info b { color: var(--accent-2); }
+.route-info.warn { color: #ffd0b0; }
+
+/* ---------- Mode buttons ---------- */
+.mode-group { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin: 10px 0 4px; }
+.mode-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 12px 6px;
+  background: var(--bg-soft);
+  border: 1.5px solid var(--line);
+  border-radius: 12px;
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color .15s, background .15s;
+}
+.mode-btn.selected { border-color: var(--accent); background: #17233f; }
+.mode-emoji { font-size: 22px; }
+.mode-name { font-size: 13px; font-weight: 700; }
+.mode-desc { font-size: 10px; color: var(--muted); text-align: center; }
+
+/* ---------- Buttons ---------- */
+.primary-btn {
+  width: 100%;
+  padding: 17px;
+  font-size: 18px;
+  font-weight: 800;
+  color: #fff;
+  background: linear-gradient(135deg, var(--accent), #6aa1ff);
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+}
+.primary-btn:active { transform: scale(0.99); }
+
+.hint { text-align: center; color: var(--muted); font-size: 12px; margin-top: 14px; }
+
+/* ---------- Running screen ---------- */
+.run-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+.run-line-tag {
+  font-weight: 800; font-size: 15px; padding: 6px 12px;
+  border-radius: 999px; background: var(--accent); color: #fff;
+}
+.ghost-btn {
+  background: transparent; color: var(--muted);
+  border: 1px solid var(--line); border-radius: 999px;
+  padding: 8px 16px; font-size: 14px; cursor: pointer;
+}
+
+.big-count { text-align: center; margin: 30px 0 12px; }
+.big-number {
+  font-size: 120px; font-weight: 900; line-height: 1;
+  color: var(--accent-2); letter-spacing: -4px;
+}
+.big-unit { font-size: 18px; color: var(--muted); margin-top: 4px; }
+
+.eta-box {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: 12px; padding: 14px; margin-bottom: 18px;
+}
+.eta-label { color: var(--muted); font-size: 14px; }
+.eta-time { font-size: 24px; font-weight: 800; font-variant-numeric: tabular-nums; }
+
+.progress-wrap {
+  height: 10px; background: var(--bg-soft);
+  border-radius: 999px; overflow: hidden; margin-bottom: 10px;
+}
+.progress-bar {
+  height: 100%; width: 0%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  border-radius: 999px; transition: width .4s ease;
+}
+
+.station-flow {
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 13px; color: var(--muted); margin-bottom: 24px;
+}
+.flow-next { color: var(--text); font-weight: 700; font-size: 14px; }
+
+.pass-btn {
+  width: 100%; padding: 20px; font-size: 17px; font-weight: 800;
+  color: var(--text); background: var(--card);
+  border: 2px dashed var(--line); border-radius: 14px; cursor: pointer;
+}
+.pass-btn:active { background: var(--bg-soft); }
+
+.mode-note { color: var(--muted); font-size: 12px; text-align: center; margin-top: 16px; line-height: 1.5; }
+
+/* ---------- Alert overlay ---------- */
+.alert-overlay {
+  position: fixed; inset: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(255, 90, 95, 0.96);
+  animation: flash 0.7s infinite alternate;
+  padding: 24px;
+}
+@keyframes flash {
+  from { background: rgba(255, 90, 95, 0.96); }
+  to   { background: rgba(180, 30, 40, 0.98); }
+}
+.alert-inner { text-align: center; }
+.alert-emoji { font-size: 84px; animation: shake 0.5s infinite; }
+@keyframes shake {
+  0%,100% { transform: rotate(-14deg); }
+  50%     { transform: rotate(14deg); }
+}
+.alert-title { font-size: 40px; font-weight: 900; margin: 10px 0 6px; color: #fff; }
+.alert-sub { font-size: 20px; color: #fff; margin-bottom: 30px; }
+.dismiss-btn {
+  padding: 16px 40px; font-size: 18px; font-weight: 800;
+  color: var(--warn); background: #fff; border: none;
+  border-radius: 999px; cursor: pointer;
+}

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b1220" />
+  <title>부산 하차 알리미</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="icon.svg" />
+  <link rel="icon" href="icon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app">
+    <!-- ================= 설정 화면 ================= -->
+    <section id="setup" class="screen">
+      <header class="hero">
+        <div class="hero-badge">🚇</div>
+        <h1>부산 하차 알리미</h1>
+        <p class="subtitle">영상 보다가 내릴 곳 놓치지 마세요</p>
+      </header>
+
+      <div class="card">
+        <label class="field">
+          <span class="field-label">노선</span>
+          <select id="lineSelect"></select>
+        </label>
+
+        <label class="field">
+          <span class="field-label">출발역 (지금 타는 역)</span>
+          <select id="fromSelect"></select>
+        </label>
+
+        <label class="field">
+          <span class="field-label">도착역 (내릴 역)</span>
+          <select id="toSelect"></select>
+        </label>
+
+        <div id="routeInfo" class="route-info" hidden></div>
+      </div>
+
+      <div class="card">
+        <span class="field-label">알림 방식</span>
+        <div class="mode-group" id="modeGroup">
+          <button class="mode-btn selected" data-mode="time">
+            <span class="mode-emoji">⏱️</span>
+            <span class="mode-name">시간 예측</span>
+            <span class="mode-desc">지하에서도 OK · 추천</span>
+          </button>
+          <button class="mode-btn" data-mode="gps">
+            <span class="mode-emoji">📍</span>
+            <span class="mode-name">GPS 자동</span>
+            <span class="mode-desc">지상 구간에 강함</span>
+          </button>
+          <button class="mode-btn" data-mode="manual">
+            <span class="mode-emoji">👆</span>
+            <span class="mode-name">수동 탭</span>
+            <span class="mode-desc">정차할 때 탭</span>
+          </button>
+        </div>
+
+        <label class="field field-inline">
+          <span class="field-label">몇 정거장 전에 알릴까요?</span>
+          <select id="alertBefore">
+            <option value="0">도착역에서</option>
+            <option value="1" selected>1 정거장 전</option>
+            <option value="2">2 정거장 전</option>
+            <option value="3">3 정거장 전</option>
+          </select>
+        </label>
+      </div>
+
+      <button id="startBtn" class="primary-btn">알림 시작</button>
+      <p class="hint">💡 홈 화면에 추가하면 앱처럼 쓸 수 있어요.</p>
+    </section>
+
+    <!-- ================= 진행 화면 ================= -->
+    <section id="running" class="screen" hidden>
+      <div class="run-head">
+        <span id="runLine" class="run-line-tag">1호선</span>
+        <button id="stopBtn" class="ghost-btn">중지</button>
+      </div>
+
+      <div class="big-count">
+        <div id="bigNumber" class="big-number">–</div>
+        <div id="bigUnit" class="big-unit">정거장 남음</div>
+      </div>
+
+      <div id="etaBox" class="eta-box">
+        <span class="eta-label">예상 도착까지</span>
+        <span id="etaTime" class="eta-time">--:--</span>
+      </div>
+
+      <div class="progress-wrap">
+        <div id="progressBar" class="progress-bar"></div>
+      </div>
+
+      <div class="station-flow">
+        <span id="fromLabel" class="flow-end">출발</span>
+        <span id="nextStation" class="flow-next">다음 역 –</span>
+        <span id="toLabel" class="flow-end">도착</span>
+      </div>
+
+      <button id="passBtn" class="pass-btn">
+        <span id="passBtnText">역 통과 / 도착 (탭해서 보정)</span>
+      </button>
+
+      <p id="modeNote" class="mode-note"></p>
+    </section>
+
+    <!-- ================= 알림 오버레이 ================= -->
+    <div id="alertOverlay" class="alert-overlay" hidden>
+      <div class="alert-inner">
+        <div class="alert-emoji">🔔</div>
+        <div id="alertTitle" class="alert-title">곧 도착!</div>
+        <div id="alertSub" class="alert-sub">내릴 준비 하세요</div>
+        <button id="dismissBtn" class="dismiss-btn">알림 끄기</button>
+      </div>
+    </div>
+  </main>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

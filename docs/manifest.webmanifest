@@ -1,0 +1,20 @@
+{
+  "name": "부산 하차 알리미",
+  "short_name": "하차알리미",
+  "description": "부산 지하철에서 내릴 역을 놓치지 않게 알려주는 앱",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0b1220",
+  "theme_color": "#0b1220",
+  "lang": "ko",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
