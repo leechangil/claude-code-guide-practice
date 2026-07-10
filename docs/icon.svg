@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <rect width="512" height="512" rx="112" fill="#0b1220"/>
+  <circle cx="256" cy="230" r="150" fill="none" stroke="#4f8cff" stroke-width="26"/>
+  <!-- 지하철 차량 -->
+  <rect x="176" y="150" width="160" height="150" rx="34" fill="#2ee6a6"/>
+  <rect x="196" y="176" width="120" height="54" rx="12" fill="#0b1220"/>
+  <circle cx="212" cy="272" r="15" fill="#0b1220"/>
+  <circle cx="300" cy="272" r="15" fill="#0b1220"/>
+  <!-- 알림 종 -->
+  <g transform="translate(340,320)">
+    <circle r="72" fill="#ff5a5f"/>
+    <path d="M0 -38 C 22 -38 34 -22 34 -2 L 38 16 L -38 16 L -34 -2 C -34 -22 -22 -38 0 -38 Z" fill="#fff"/>
+    <circle cy="26" r="9" fill="#fff"/>
+  </g>
+</svg>
